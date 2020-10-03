@@ -42,7 +42,7 @@
 using namespace std;
 using namespace openfam;
 
-#define int_ true
+//#define int_ true
 #define void_
 #define ptr__ (void *)NULL
 #define FAM_OPS_UNIMPLEMENTED(type)                                            \
