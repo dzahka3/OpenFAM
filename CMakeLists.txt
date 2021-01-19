@@ -63,7 +63,7 @@ endif()
 if(ENABLE_MEMORYSERVER_PROFILING)
 	message(STATUS "Memory Server profile enabled")
 	add_definitions(-DMEMSERVER_PROFILE)
-	set( TEST_MEMSERVER_IP "127.0.0.1" )
+	set( TEST_MEMSERVER_IP "130.207.122.217" )
 endif()
 
 message(STATUS "====================")
@@ -132,7 +132,7 @@ include_directories(/usr/local/include)
 #
 
 set( TEST_DEFAULT_REGION "Default" )
-set( TEST_MEMORY_SERVER "0:127.0.0.1" )
+set( TEST_MEMORY_SERVER "0:130.207.122.217" )
 set( TEST_GRPC_PORT "8787" )
 set( TEST_LIBFABRIC_PORT "7500" )
 set( TEST_LIBFABRIC_PROVIDER "sockets" )

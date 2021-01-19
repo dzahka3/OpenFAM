@@ -39,7 +39,7 @@ using namespace openfam;
 
 int main(int argc, char **argv) {
     Fam_Region_Descriptor *region = NULL;
-    char configFilename[32];
+    char configFilename[400];
     int matRowCount;
     int numSegments;
     char inpPath[PATH_MAX];
@@ -54,8 +54,11 @@ int main(int argc, char **argv) {
         cout << argv[0]<<" <config_file>" << endl;
         exit(1);
     }
+    cout << "Here 1" << endl;
     strcpy(configFilename, argv[1]);
+    cout << "Here 2" << endl;
     spmv_read_config_file(configFilename, matRowCount, numSegments, inpPath);
+    cout << "Here 3" << endl;
     cout << "Matrix : " << matRowCount << " X " << matRowCount << endl;
     cout << "Num Segments : " << numSegments << endl;
     cout << "Data Path : " << inpPath << endl;
@@ -68,9 +71,11 @@ int main(int argc, char **argv) {
     config.nelements = -1;
     config.nsegments = numSegments;
 
+    cout << "Here 4" << endl;
     load_dataitem((char*)&config, "config", 0,
                        sizeof(struct SparseMatrixConfig), region, perm);
 
+    cout << "Here 5" << endl;
     // Write config file to FAM
     ret = spmv_load_file_to_dataitem(configFilename, configFilename, region,
                                      perm, CONFIG_FILE_SIZE);
@@ -88,6 +93,7 @@ int main(int argc, char **argv) {
         sprintf(tmpFilename, "/rowptr%d.bin", i);
         strcpy(inpFilename, inpPath);
         strcat(inpFilename, tmpFilename);
+        cout << "file " << inpFilename << endl;
         size = (MAX_ROW_COUNT + 5) * sizeof(int);
 	char* rowptrDataitemName = (char *)("rowptr"+std::to_string(i)).c_str();
         ret = spmv_load_file_to_dataitem(inpFilename, rowptrDataitemName, region, perm,

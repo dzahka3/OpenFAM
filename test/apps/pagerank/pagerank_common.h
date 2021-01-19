@@ -133,8 +133,9 @@ Fam_Region_Descriptor *spmv_fam_initialize(size_t size) {
     // FAM initialize
     my_fam = new fam();
     memset((void *)&fam_opts, 0, sizeof(Fam_Options));
-    fam_opts.runtime = strdup("NONE");
-
+    // fam_opts.runtime = strdup("NONE");
+    init_fam_options(&fam_opts);
+    
     try {
         my_fam->fam_initialize("default", &fam_opts);
     } catch (Fam_Exception &e) {
@@ -493,6 +494,7 @@ int load_dataitem(char *inpBuf, const char *dataitemName, uint64_t offset,
         cerr << "SpMV fam write failed" <<endl;
         return -1;
     }
+    cout << "wrote " << dataitemName <<  "OK" << endl;
     return 0;
 }
 
@@ -513,6 +515,7 @@ int spmv_load_file_to_dataitem(char *inpFilename, char *dataitemName,
         printf("File not found:%s\n", inpFilename);
         return -1;
     }
+    cout << "trying " << dataitemName << endl;
     try {
         dataitem = my_fam->fam_allocate(dataitemName, size, perm, region);
     } catch (...) {

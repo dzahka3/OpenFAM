@@ -1,6 +1,6 @@
 #!/bin/bash
 CURRENTDIR=`pwd`
-RPC_BUILD_DIR=$CURRENTDIR/build/build-rpc
+RPC_BUILD_DIR=$CURRENTDIR/build-loopback/build-rpc
 
 #creating build directory if not present
 if [ ! -d "$RPC_BUILD_DIR" ]; then
